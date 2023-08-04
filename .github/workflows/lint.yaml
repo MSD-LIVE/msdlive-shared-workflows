@@ -7,4 +7,8 @@ jobs:
       - uses: actions/checkout@v3
       - run: pip install black~=23.0
       - run: black .
+      - run: npm install -g prettier@3.0.1
+      - run: prettier . --write
       - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Autoformats code with black and Prettier
