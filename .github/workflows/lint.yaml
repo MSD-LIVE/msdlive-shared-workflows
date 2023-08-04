@@ -1,11 +1,10 @@
 name: Enforce Linting Rules
 on: [push, workflow_call]
 jobs:
-    check-python-format:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: psf/black@stable
-              with:
-                  jupyter: true
-                  version: "~= 23.0"
+  check-python-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install black~=23.0
+      - run: black .
+      - uses: stefanzweifel/git-auto-commit-action@v4
